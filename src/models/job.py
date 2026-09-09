@@ -1,13 +1,24 @@
 from datetime import date
 from typing import Optional
+from enum import Enum
 from pydantic import BaseModel, HttpUrl, computed_field, model_validator
 
+class Category(str, Enum):
+    PROGRAMMING = "Programming"
+    GAME_DESIGN = "Game Design"
+    ART = "Art"
+    PRODUCTION = "Production"
+    QA = "QA"
+    OTHER = "Other"
+    
 
 class Job(BaseModel):
     company: str
     role: str
     application_url: HttpUrl
     remote: bool = False
+    category: Category
+    technologies: list[str] = []
 
     location: Optional[str] = None
     country: Optional[str] = None
