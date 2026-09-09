@@ -16,7 +16,7 @@ class Source(str, Enum):
     LINKEDIN = "LinkedIn"
     INDEED = "Indeed"
     GLASSDOOR = "Glassdoor"
-    GREENHOUSE = "greenhouse"
+    GREENHOUSE = "Greenhouse"
     ANGELLIST = "AngelList"
     GITHUB = "GitHub"
     OTHER = "Other"
