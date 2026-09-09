@@ -10,6 +10,16 @@ class Category(str, Enum):
     PRODUCTION = "Production"
     QA = "QA"
     OTHER = "Other"
+    MISC = "Misc."
+
+class Source(str, Enum):
+    LINKEDIN = "LinkedIn"
+    INDEED = "Indeed"
+    GLASSDOOR = "Glassdoor"
+    GREENHOUSE = "greenhouse"
+    ANGELLIST = "AngelList"
+    GITHUB = "GitHub"
+    OTHER = "Other"
     
 
 class Job(BaseModel):
@@ -17,7 +27,8 @@ class Job(BaseModel):
     role: str
     application_url: HttpUrl
     remote: bool = False
-    category: Category
+    category: Category = Category.MISC
+    source: Source = Source.OTHER
     technologies: list[str] = []
 
     location: Optional[str] = None
