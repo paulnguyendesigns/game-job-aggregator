@@ -1,7 +1,7 @@
 import requests
 import logging
 from datetime import datetime
-from src.models.job import Job, Category, Source
+from src.models.job import Job, Source
 
 logger = logging.getLogger(__name__)
 
