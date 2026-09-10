@@ -13,13 +13,9 @@ class Category(str, Enum):
     MISC = "Misc."
 
 class Source(str, Enum):
-    LINKEDIN = "LinkedIn"
-    INDEED = "Indeed"
-    GLASSDOOR = "Glassdoor"
     GREENHOUSE = "Greenhouse"
     LEVER = "Lever"
-    ANGELLIST = "AngelList"
-    GITHUB = "GitHub"
+    ASHBY = "Ashby"
     OTHER = "Other"
     
 

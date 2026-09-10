@@ -5,6 +5,14 @@ from src.models.job import Job, Source
 
 logger = logging.getLogger(__name__)
 
+def fetch_raw_jobs(board_token: str) -> list[dict]:
+    """Fetch the raw job list from a company's public Greenhouse board."""
+    url = f"https://boards-api.greenhouse.io/v1/boards/{board_token}/jobs"
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    data = response.json()
+    return data["jobs"]
+
 def fetch_jobs(board_token: str) -> list[Job]:
     """Fetch and parse all jobs from a company's Greenhouse board.
 
@@ -21,14 +29,6 @@ def fetch_jobs(board_token: str) -> list[Job]:
             logger.warning("Skipping malformed job from %s: %s", board_token, e)
 
     return jobs
-
-def fetch_raw_jobs(board_token: str) -> list[dict]:
-    """Fetch the raw job list from a company's public Greenhouse board."""
-    url = f"https://boards-api.greenhouse.io/v1/boards/{board_token}/jobs"
-    response = requests.get(url, timeout=10)
-    response.raise_for_status()
-    data = response.json()
-    return data["jobs"]
 
 def parse_job(raw: dict) -> Job:
     """Convert one raw Greenhouse job dict into our normalized Job model."""
