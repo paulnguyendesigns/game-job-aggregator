@@ -40,6 +40,6 @@ def parse_job(raw: dict, company_name: str) -> Job:
         application_url=raw["jobUrl"],
         source=Source.ASHBY,
         location=raw["location"],
-        remote=raw.get("isRemote", False),
+        remote=raw.get("isRemote") or False,
         date_posted=posted_at.date(),
     )
